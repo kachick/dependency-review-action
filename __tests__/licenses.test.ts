@@ -54,7 +54,9 @@ test('it passes if a license inside the allow list is found', async () => {
 
 test('it fails if a license outside the allow list is found', async () => {
   const changes: Changes = [npmChange, rubyChange]
-  const [invalidChanges, _] = getDeniedLicenseChanges(changes, {allow: ['BSD-2-Clause']})
+  const [invalidChanges, _] = getDeniedLicenseChanges(changes, {
+    allow: ['BSD-2-Clause']
+  })
   expect(invalidChanges).toStrictEqual([npmChange])
 })
 
@@ -66,13 +68,17 @@ test('it passes if license outside at least one of deny list is found', async ()
 
 test('it fails if a license inside the deny list is found', async () => {
   const changes: Changes = [npmChange, rubyChange]
-  const [invalidChanges] = getDeniedLicenseChanges(changes, {deny: ['BSD-2-Clause']})
+  const [invalidChanges] = getDeniedLicenseChanges(changes, {
+    deny: ['BSD-2-Clause']
+  })
   expect(invalidChanges).toStrictEqual([rubyChange])
 })
 
 test.skip('it fails if a multiple license inside the all of deny list is found', async () => {
   const changes: Changes = [npmChange, rubyChange]
-  const [invalidChanges] = getDeniedLicenseChanges(changes, {deny: ['MIT', 'CC0-1.0']})
+  const [invalidChanges] = getDeniedLicenseChanges(changes, {
+    deny: ['MIT', 'CC0-1.0']
+  })
   expect(invalidChanges).toStrictEqual([npmChange])
 })
 
