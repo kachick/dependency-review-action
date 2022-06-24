@@ -1,5 +1,5 @@
 import spdxSatisfies from 'spdx-satisfies'
-import {Change, ChangeSchema} from './schemas'
+import {Change} from './schemas'
 
 /**
  * Loops through a list of changes, filtering and returning the
