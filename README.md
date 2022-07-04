@@ -1,5 +1,9 @@
 # dependency-review-action
 
+***This repository is temporary forked from [official](https://github.com/actions/dependency-review-action) to avoid [false positive for SPDX multiple licenses](https://github.com/actions/dependency-review-action/pull/131).***
+
+---
+
 This action scans your pull requests for dependency changes and will raise an error if any new dependencies have existing vulnerabilities. The action is supported by an [API endpoint](https://docs.github.com/en/rest/reference/dependency-graph#dependency-review) that diffs the dependencies between any two revisions.
 
 The action is available for all public repositories, as well as private repositories that have GitHub Advanced Security licensed.
@@ -25,7 +29,7 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
+        uses: kachick/dependency-review-action@v2
 ```
 
 Please keep in mind that you need a GitHub Advanced Security license if you're running this action on private repos.
@@ -47,7 +51,7 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: Dependency Review
-        uses: actions/dependency-review-action@v2
+        uses: kachick/dependency-review-action@v2
         with:
           # Possible values: "critical", "high", "moderate", "low"
           # fail-on-severity: critical
@@ -72,7 +76,7 @@ This example will only fail on pull requests with `critical` and `high` vulnerab
 
 ```yaml
 - name: Dependency Review
-  uses: actions/dependency-review-action@v2
+  uses: kachick/dependency-review-action@v2
   with:
     fail-on-severity: high
 ```
@@ -92,7 +96,7 @@ to filter. A couple of examples:
 ```yaml
 # only allow MIT-licensed dependents
 - name: Dependency Review
-  uses: actions/dependency-review-action@v2
+  uses: kachick/dependency-review-action@v2
   with:
     allow-licenses: MIT
 ```
@@ -100,7 +104,7 @@ to filter. A couple of examples:
 ```yaml
 # Block Apache 1.1 and 2.0 licensed dependents
 - name: Dependency Review
-  uses: actions/dependency-review-action@v2
+  uses: kachick/dependency-review-action@v2
   with:
     deny-licenses: Apache-1.1, Apache-2.0
 ```
