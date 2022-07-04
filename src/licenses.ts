@@ -1,4 +1,5 @@
 import {Change} from './schemas'
+import spdxSatisfies from 'spdx-satisfies'
 
 /**
  * Loops through a list of changes, filtering and returning the
@@ -31,7 +32,7 @@ export function getDeniedLicenseChanges(
       continue
     }
     if (allow !== undefined) {
-      if (!allow.includes(license)) {
+      if (allow.every(allowLicense => !spdxSatisfies(allowLicense, license))) {
         disallowed.push(change)
       }
     } else if (deny !== undefined) {
