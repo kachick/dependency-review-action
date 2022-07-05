@@ -4,7 +4,7 @@ import {getDeniedLicenseChanges, isSpdxId} from '../src/licenses'
 
 describe('isSpdxId', () => {
   test('it returns true for known SPDX ID even if it has been deprecated', () => {
-    expect(isSpdxId('GPL-3.0-or-later')).toBe(true)
+    expect(isSpdxId('GPL-3.0+')).toBe(true)
   })
 
   test('it returns true for known SPDX ID conjunction', () => {
