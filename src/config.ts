@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as z from 'zod'
-import {isValidSpdxId} from './licenses'
+import {isSpdxId} from './licenses'
 import {ConfigurationOptions, SEVERITIES} from './schemas'
 
 function getOptionalInput(name: string): string | undefined {
@@ -11,7 +11,7 @@ function getOptionalInput(name: string): string | undefined {
 function parseLicenses(ids: string | undefined): string[] | undefined {
   return ids?.split(',').map(x => {
     const id = x.trim()
-    if (isValidSpdxId(id)) {
+    if (isSpdxId(id)) {
       return id
     } else {
       throw new Error(
