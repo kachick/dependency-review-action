@@ -1,6 +1,16 @@
-import {expect, test} from '@jest/globals'
+import {expect, test, describe} from '@jest/globals'
 import {Change, Changes} from '../src/schemas'
-import {getDeniedLicenseChanges} from '../src/licenses'
+import {getDeniedLicenseChanges, isValidSpdxId} from '../src/licenses'
+
+describe('isValidSpdxId', () => {
+  test('it returns true for known SPDX ID even if it has been deprecated', () => {
+    expect(isValidSpdxId('GPL-3.0-or-later')).toBe(true)
+  })
+
+  test('it returns false for unknown SPDX ID', () => {
+    expect(isValidSpdxId('GPL-3')).toBe(false)
+  })
+})
 
 let npmChange: Change = {
   manifest: 'package.json',

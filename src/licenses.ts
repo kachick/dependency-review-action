@@ -1,5 +1,15 @@
 import {Change} from './schemas'
 import spdxSatisfies from 'spdx-satisfies'
+import parse from 'spdx-expression-parse'
+
+export function isValidSpdxId(id: string): boolean {
+  try {
+    parse(id)
+  } catch (err) {
+    return false
+  }
+  return true
+}
 
 /**
  * Loops through a list of changes, filtering and returning the
@@ -27,7 +37,7 @@ export function getDeniedLicenseChanges(
 
   for (const change of changes) {
     const license = change.license
-    if (license === null) {
+    if (license === null || !isValidSpdxId(license)) {
       unknown.push(change)
       continue
     }
