@@ -11,4 +11,4 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
       - name: Dependency Review
-        uses: actions/dependency-review-action@main
+        uses: kachick/dependency-review-action@main
