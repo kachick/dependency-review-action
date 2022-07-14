@@ -100,6 +100,9 @@ function getDeniedLicenseChanges(changes, licenses) {
     const disallowed = [];
     const unknown = [];
     for (const change of changes) {
+        if (change.change_type === 'removed') {
+            continue;
+        }
         const license = change.license;
         if (license === null || !isSpdxId(license)) {
             unknown.push(change);
@@ -14530,6 +14533,9 @@ function getDeniedLicenseChanges(changes, licenses) {
     const disallowed = [];
     const unknown = [];
     for (const change of changes) {
+        if (change.change_type === 'removed') {
+            continue;
+        }
         const license = change.license;
         if (license === null || !isSpdxId(license)) {
             unknown.push(change);
