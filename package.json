@@ -30,7 +30,7 @@
     "@octokit/plugin-retry": "^3.0.9",
     "@octokit/request-error": "^3.0.1",
     "ansi-styles": "^6.1.0",
-    "got": "^12.5.1",
+    "got": "^12.5.2",
     "nodemon": "^2.0.20",
     "spdx-expression-parse": "^3.0.1",
     "spdx-satisfies": "^5.0.1",
